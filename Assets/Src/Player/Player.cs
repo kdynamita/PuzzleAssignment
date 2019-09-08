@@ -10,6 +10,9 @@ public class Player : MonoBehaviour {
 	private float velocity = 0;
 	private int moveCount = 0;
 	private CharacterController cc;
+    public Manager manager;
+    //private Toolbox toolbox;
+
 
     enum State {
         Idle,
@@ -22,6 +25,8 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		cc = this.GetComponent<CharacterController>();
+        manager = Toolbox.GetInstance().GetManager();
+        
 	}
 
 	// Update is called once per frame
@@ -96,10 +101,25 @@ public class Player : MonoBehaviour {
 
 	public void HasWon () {
 		this.currentState = State.Won;
+        Debug.Log("You won!");
+        manager.Won();
 	}
 
 	public int AccumulateScore (int scoreAdd) {
 		this.score += scoreAdd;
 		return this.score;
-	}
+    }
+
+    void OnColliderEnter(Collider collider)
+    {
+        this.manager.Spawn();
+    }
+
+    void OnDestroy()
+    {
+        this.manager.DeleteAll();
+
+    }
+
+    //this.manager.Spawn();
 }
