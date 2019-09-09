@@ -32,6 +32,7 @@ public class ShowStats : MonoBehaviour
     void UpdateStats()
     {
         score.text = manager.totalScore.ToString();
+        time.text = manager.totalTime.ToString() + "s";
         death.text = manager.totalSpawned.ToString();
         move.text = manager.totalMoves.ToString();
     }

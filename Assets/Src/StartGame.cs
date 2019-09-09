@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    void Update()
+    {
+       if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGame();
+        }
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene("Level1");

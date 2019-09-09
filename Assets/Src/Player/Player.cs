@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 
     private float velocity = 0;
 
+    public float time = 0f;
     private int score = 0;
 	private int moveCount = 0;
 	private CharacterController cc;
@@ -27,8 +28,8 @@ public class Player : MonoBehaviour {
 	void Start() {
 		cc = this.GetComponent<CharacterController>();
         manager = Toolbox.GetInstance().GetManager();
-        
-	}
+        StartTimer();
+    }
 
 	// Update is called once per frame
 	void Update() {
@@ -48,7 +49,9 @@ public class Player : MonoBehaviour {
 				this.Won();
 				break;
 		}
-	}
+
+        StartTimer();
+    }
 
 	void Idle () {
 		if (Input.GetKey(KeyCode.LeftArrow)) {
@@ -113,8 +116,14 @@ public class Player : MonoBehaviour {
 		return this.score;
     }
 
+    public void StartTimer()
+    {
+        time += 0.016f;
+    }
+
     void OnDestroy()
     {
+        this.manager.totalTime += time;
         this.manager.onScene = false;
         this.manager.DeleteAll();
     }

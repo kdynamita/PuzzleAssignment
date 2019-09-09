@@ -6,12 +6,11 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
-    public Stats stats;
-    [Space]
     public Player spawnablePrefab; // what prefab that can be spawned
     public int totalSpawned = 0; // total number of prefabs spawned
     public int totalMoves = 0;
     public int totalScore = 0;
+    public float totalTime = 0f;
 
     [SerializeField] private List<Player> spawnedList; // list that holds what is spawned
 
