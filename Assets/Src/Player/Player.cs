@@ -6,9 +6,10 @@ public class Player : MonoBehaviour {
 	public float initialVelocity = 2f;
 	public float decay = 0.1f;
 
-	private int score = 0;
-	private float velocity = 0;
-	private int moveCount = 0;
+    private float velocity = 0;
+
+    [SerializeField] private int score = 0;
+	[SerializeField] private int moveCount = 0;
 	private CharacterController cc;
     public Manager manager;
     //private Toolbox toolbox;
@@ -110,13 +111,9 @@ public class Player : MonoBehaviour {
 		return this.score;
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        this.manager.Spawn();
-    }
-
     void OnDestroy()
     {
+        this.manager.onScene = false;
         this.manager.DeleteAll();
     }
 }
