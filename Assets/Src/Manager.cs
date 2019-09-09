@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
-
+    public Stats stats;
+    [Space]
     public Player spawnablePrefab; // what prefab that can be spawned
     public int totalSpawned = 0; // total number of prefabs spawned
     public int totalMoves = 0;

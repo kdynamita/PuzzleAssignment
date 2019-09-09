@@ -10,4 +10,10 @@ public class StartGame : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
+    public void QuitGame()
+    {
+        Debug.Log("Quit!");
+        Application.Quit();
+    }
+
 }
