@@ -110,7 +110,7 @@ public class Player : MonoBehaviour {
 		return this.score;
     }
 
-    void OnColliderEnter(Collider collider)
+    void OnCollisionEnter(Collision col)
     {
         this.manager.Spawn();
     }
@@ -118,8 +118,5 @@ public class Player : MonoBehaviour {
     void OnDestroy()
     {
         this.manager.DeleteAll();
-
     }
-
-    //this.manager.Spawn();
 }

@@ -17,6 +17,8 @@ public class Manager : MonoBehaviour
     void Start()
     {
         spawnedList = new List<Player>();
+        if (spawnablePrefab == null)
+            spawnablePrefab = Resources.Load<GameObject>("Player").GetComponent<Player>();
     }
 
 
@@ -27,7 +29,6 @@ public class Manager : MonoBehaviour
     // adds to the total number of spawned objects
     public GameObject Spawn()
     {
-        spawnablePrefab = Resources.Load<GameObject>("Player").GetComponent<Player>();
         Player spawned = Instantiate<Player>(this.spawnablePrefab);
         spawnedList.Add(spawned);
         spawned.manager = this;
