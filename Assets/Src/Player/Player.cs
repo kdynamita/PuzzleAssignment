@@ -8,8 +8,8 @@ public class Player : MonoBehaviour {
 
     private float velocity = 0;
 
-    [SerializeField] private int score = 0;
-	[SerializeField] private int moveCount = 0;
+    private int score = 0;
+	private int moveCount = 0;
 	private CharacterController cc;
     public Manager manager;
     //private Toolbox toolbox;
@@ -64,7 +64,8 @@ public class Player : MonoBehaviour {
 			this.currentState = State.Moving;
 			this.velocity = this.initialVelocity;
 			this.moveCount++;
-		}
+            this.manager.UpdateMoves();
+        }
 	}
 
 	void Moving () {
@@ -108,6 +109,7 @@ public class Player : MonoBehaviour {
 
 	public int AccumulateScore (int scoreAdd) {
 		this.score += scoreAdd;
+        this.manager.UpdateScore();
 		return this.score;
     }
 

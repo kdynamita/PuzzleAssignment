@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -51,9 +52,13 @@ public class Manager : MonoBehaviour
         CheckSpawn();
     }
 
-    public void UpdateStats()
+    public void UpdateMoves()
     {
-        
+        totalMoves += 1;
+    }
+    public void UpdateScore()
+    {
+        totalScore += 1;
     }
 
     public void CheckSpawn()
@@ -128,5 +133,6 @@ public class Manager : MonoBehaviour
                 SceneManager.LoadScene("Win");
                 break;
         }
+
     }
 }
